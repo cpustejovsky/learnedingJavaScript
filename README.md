@@ -10,6 +10,11 @@
 #### To-Do List!
 1) extends
 2) promises
-3) TypeScript 101
 4) let vs const
+
+### 3 December 2018
+**TypeScript Learning will go in the typescript directory**
+
+#### JavaScript Promises
+
 
