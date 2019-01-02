@@ -10,4 +10,18 @@ console.log(all(arr1, x => x < 9)); //false
 //does the same thing as this below
 
 console.log(arr1.every(x => x < 11)); //true
-console.log(arr1.every(x => x < 9)); //fakse
+console.log(arr1.every(x => x < 9)); //false
+
+//allEqual: specialized version of all()
+
+const allEqual = arr => arr.every(val => val === arr[0]);
+let arr2 = [1,1,1,1,1];
+
+console.log(allEqual(arr1)); //false
+console.log(allEqual(arr2)); //true
+
+//same as...
+
+console.log(arr1.every(x => x === arr1[0])); //false
+console.log(arr2.every(x => x === arr2[0])); //true
+
