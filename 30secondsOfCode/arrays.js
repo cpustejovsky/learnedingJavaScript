@@ -39,3 +39,17 @@ console.log(any(arr1, (x => x < 0))); //false
 
 console.log(arr1.some(x => x < 1)); //true
 console.log(arr1.some(x => x < 0)); //false
+
+console.log('this is for the arrayToCSV() function');
+
+const arrayToCSV = (arr, delimiter = ',') =>
+    arr.map(v => v.map(x => `"${x}"`).join(delimiter)).join('\n');
+
+console.log(arrayToCSV([
+    ['a', 'b'],
+    ['c', 'd']
+])); // '"a","b"\n"c","d"'
+console.log(arrayToCSV([
+    ['a', 'b'],
+    ['c', 'd']
+], ';')); // '"a";"b"\n"c";"d"'
