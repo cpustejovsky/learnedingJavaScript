@@ -53,3 +53,13 @@ console.log(arrayToCSV([
     ['a', 'b'],
     ['c', 'd']
 ], ';')); // '"a";"b"\n"c";"d"'
+
+console.log('this is the bifurcate() function');
+
+const bifurcate = (arr, filter) => arr.reduce((accumulator, currentValue, i) => (accumulator[filter[i] ? 0 : 1].push(currentValue), accumulator), [[], []]);
+
+let bifurcateTest = bifurcate(['beep', 'boop', 'foo', 'bar'], [true, true, false, true]); // [ ['beep', 'boop', 'bar'], ['foo'] ]
+console.log(bifurcateTest);
+
+let bifurcateTest2 = bifurcate(['BTC', 'ETH', 'BTC', 'ETH'], [true, false, true, false]); // [ ['BTC', 'BTC'], ['ETH', 'ETH'] ]
+console.log(bifurcateTest2);
