@@ -54,12 +54,35 @@ console.log(arrayToCSV([
     ['c', 'd']
 ], ';')); // '"a";"b"\n"c";"d"'
 
-console.log('this is the bifurcate() function');
+console.log('this is the bifurcate() function. I\'m not that impressed with it.');
 
-const bifurcate = (arr, filter) => arr.reduce((accumulator, currentValue, i) => (accumulator[filter[i] ? 0 : 1].push(currentValue), accumulator), [[], []]);
+const bifurcate = (arr, filter) => 
+    arr.reduce((accumulator, currentValue, i) => (accumulator[filter[i] ? 0 : 1].push(currentValue), accumulator), [[], []]);
 
 let bifurcateTest = bifurcate(['beep', 'boop', 'foo', 'bar'], [true, true, false, true]); // [ ['beep', 'boop', 'bar'], ['foo'] ]
 console.log(bifurcateTest);
 
 let bifurcateTest2 = bifurcate(['BTC', 'ETH', 'BTC', 'ETH'], [true, false, true, false]); // [ ['BTC', 'BTC'], ['ETH', 'ETH'] ]
 console.log(bifurcateTest2);
+
+console.log("this is the bifurcateBy() function");
+
+const bifurcateBy = (arr, fn) =>
+    arr.reduce((accumulator, currentValue, i) => (accumulator[fn(currentValue, i) ? 0 : 1].push(currentValue), accumulator), [[], []]);
+
+let bifurcateByTest = bifurcateBy(['beep', 'boop', 'foo', 'bar'], x => x[0] === 'b'); // [ ['beep', 'boop', 'bar'], ['foo'] ]    
+console.log(bifurcateByTest);
+
+let bifurcateByTest2 = bifurcateBy(['BTC', 'ETH', 'BTC', 'ETH'], x => x[0] === 'B'); // [ ['BTC', 'BTC'], ['ETH', 'ETH'] ]
+console.log(bifurcateByTest2);
+
+let cryptoArray = ["BTC", "BTC", "BCH", "BCH", "ETH", "ETH"];
+
+let bifurcateByTest3A = bifurcateBy(
+  cryptoArray,
+  x => x[0] === "B"
+); 
+console.log(bifurcateByTest3A);
+
+let bifurcateByTest3B = bifurcateBy(bifurcateByTest3A[0], x =>[1] === "T");
+console.log(bifurcateByTest3B);
