@@ -1,11 +1,8 @@
 //condensing an array of values into a single value
 
 var numbers = [ 10, 20, 30];
-
 var sum = 0;
-
 var sumOfNumbers = numbers.reduce(((accumulator, currentValue) => accumulator + currentValue), 0);
-
 console.log(sumOfNumbers);
 
 var primaryColors = [
@@ -13,9 +10,6 @@ var primaryColors = [
     { color: 'yellow'},
     { color: 'blue'}
 ];
-
-// var colorReducer = (previous, primaryColor) => previous.push(primaryColor.color);
-
 var colorReducer = function(previous, primaryColor){
     previous.push(primaryColor.color)
     /*
@@ -24,9 +18,7 @@ var colorReducer = function(previous, primaryColor){
     */
     return previous;
 };
-
 togetherPrimaryColors = primaryColors.reduce(colorReducer, []);
-
 console.log(togetherPrimaryColors);
 
 //Balanced Parentheses Problem
@@ -54,7 +46,26 @@ var balancedParens = (string) => {
     return previous;
     }, 0);
 }
-
 console.log(balancedParens("(((("));
 console.log(balancedParens("(())"));
 console.log(balancedParens(")("));
+
+var trips = [{ distance: 34 }, { distance: 12 } , { distance: 1 }];
+var totalDistance = trips.reduce(((accumulator, currentValue) => currentValue.distance + accumulator), 0);
+console.log(totalDistance);
+
+var desks = [
+    { type: 'sitting' },
+    { type: 'standing' },
+    { type: 'sitting' },
+    { type: 'sitting' },
+    { type: 'standing' }
+  ];
+  
+var deskTypes = desks.reduce(function(accumulator, desk) {
+    if (desk.type === 'sitting') { return ++accumulator.sitting }
+    if (desk.type === 'standing') { return ++accumulator.standing }
+    return accumulator;
+}, { sitting: 0, standing: 0 });
+
+console.log(deskTypes);
