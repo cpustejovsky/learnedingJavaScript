@@ -1,18 +1,13 @@
-//where random bits of testing happen
+const companies = [
+    { name: 'Google', location: 'Mountain View' },
+    { name: 'Facebook', location: 'Menlo Park' },
+    { name: 'Uber', location: 'San Francisco' },
+];
 
-var promise = new Promise(function(resolve, reject) {
-    2 + 2
+//legacy
+console.log(companies[0].location); // 'Mountain View'
 
-    if (5) {
-        resolve("Stuff worked!");
-    }
-    else {
-        reject(Error("It broke"));
-    }
-});
-
-promise.then(function(result) {
-    console.log(result); // "Stuff worked!"
-}, function(err) {
-    console.log(err); // Error: "It broke"
-});
+//ES6
+const [ locationArray ] = companies;
+const { location } = locationArray;
+console.log(location);
