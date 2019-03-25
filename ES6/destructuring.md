@@ -159,3 +159,24 @@ const user = {
 signup(user);
 ```
 * Now the order of arguments does not matter. Reduces potential for errors.
+
+Imagine having a nice array of arrays that represent x and y coordinates.
+
+But the library you are using want an array of objects to do the geo-locating thingies!
+
+What to do?
+
+Well...
+```javascript
+const points = [
+    [4, 5],
+    [10, 1],
+    [0, 40],
+];
+
+let objectPoints = points.map(([x, y]) => {
+    return { x: x, y: y};
+});
+
+console.log(objectPoints); //[ { x: 4, y: 5 }, { x: 10, y: 1 }, { x: 0, y: 40 } ]
+```
