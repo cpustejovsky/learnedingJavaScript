@@ -1,13 +1,13 @@
-const companies = [
-    { name: 'Google', location: 'Mountain View' },
-    { name: 'Facebook', location: 'Menlo Park' },
-    { name: 'Uber', location: 'San Francisco' },
+const points = [
+    [4, 5],
+    [10, 1],
+    [0, 40],
 ];
 
-//legacy
-console.log(companies[0].location); // 'Mountain View'
+// structure these x and y points as an array of objects with x and y keys
 
-//ES6
-const [ locationArray ] = companies;
-const { location } = locationArray;
-console.log(location);
+let objectPoints = points.map(([x, y]) => {
+    return { x: x, y: y};
+});
+
+console.log(objectPoints);

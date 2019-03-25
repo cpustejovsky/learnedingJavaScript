@@ -80,7 +80,8 @@ console.log(rest); // ['Facebook', 'Uber']
 ```
 
 ## Destructuring Arrays and Objects
-* array of objects
+
+### Array of Objects
 ```javascript
 const companies = [
     { name: 'Google', location: 'Mountain View' },
@@ -107,3 +108,54 @@ const [ locationArray ] = companies;
 const { location } = locationArray;
 console.log(location); // 'Mountan View'
 ```
+
+### Object of Arrays
+```javascript
+const Google = {
+    locations: [ 'Mountain View', 'New York', 'London']
+};
+const { locations: [name, name2, name3] } = Google;
+console.log(name); //Mountain View
+console.log(name2); //New York
+console.log(name3); //London
+```
+Broken down
+```javascript
+const Google = {
+    locations: [ 'Mountain View', 'New York', 'London']
+};
+
+const {locations} = Google;
+console.log(locations); // [ 'Mountain View', 'New York', 'London' ]
+
+const [name, name2, name3] = locations;
+console.log(name); //Mountain View
+console.log(name2); //New York
+console.log(name3); //London
+```
+**Note**: usefulness may vary
+
+## When To Use Destructuring
+* A function with too many paramaters to easily keep track of
+  * Instead of passing a list of strings, you could pass an object with properties
+```javascript
+function signup(username, password, email, dateOfBirth, location) {
+    //create new user
+}
+signup('myname', 'mypassword', 't@t.com', '1/1/1970, Houston')
+```
+
+```javascript
+function signup({ username, password, email, dateOfBirth, location }) {
+    //create new user
+}
+const user = {
+    username: 'myname',
+    password: 'mypassword',
+    email: 't@t.com',
+    dateOfBirth: '1/1/1970',
+    city: 'Houston'
+};
+signup(user);
+```
+* Now the order of arguments does not matter. Reduces potential for errors.
