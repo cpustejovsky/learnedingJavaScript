@@ -1,3 +1,8 @@
+# Classes
+
+Acts as syntatic sugar for JavaScript's prototypal inheritance
+
+```javascript
 class Car {
     constructor({ title }) {
         this.title = title;
@@ -11,3 +16,4 @@ class Car {
 const car = new Car({ title: 'Toyota' });
 console.log(car);
 console.log(car.drive());
+```
