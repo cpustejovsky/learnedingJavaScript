@@ -74,9 +74,43 @@ RESULT
   * then more code can take place
   * generator is re-entered to resume generator execution with a passed-in variable.
 ### More Practical Example with Generators
+```javascript
+function* colors() {
+    yield 'red';
+    yield 'blue';
+    yield 'green';
+};
+
+const gen = colors();
+console.log(gen.next());
+console.log(gen.next());
+console.log(gen.next());
+console.log(gen.next());
+
+/*
+RESULTS
+{
+    value: 'red',
+    done: false
+} {
+    value: 'blue',
+    done: false
+} {
+    value: 'green',
+    done: false
+} {
+    value: undefined,
+    done: true
+}
+*/
+```
+## What does a generator do?
+They work beauitfully with `for...of` loops
+
+### Practical Uses
 * 
 
-## What does a generator do?
+
 
 ## Iteration with generators
 
