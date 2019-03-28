@@ -127,14 +127,131 @@ for (let name of teamIterator(engineeringTeam)) {
 };
 console.log(names); //[ 'Jill', 'Alex', 'Dave' ]
 ```
-### Practical Uses
-* 
 
+Now if we added an independent testing team as a apart of the engineering team...
+```javascript
+const testingTeam = {
+    lead: "Amanda",
+    tester: "Bill"
+};
 
+const engineeringTeam = {
+    testingTeam,
+    size: 3,
+    department: 'Engineering',
+    lead: 'Jill',
+    manager: 'Alex',
+    engineer: 'Dave'
+};
+```
 
-## Iteration with generators
+and we wanted the `teamIterator` to iterate over them as well, because with just the added team, we're still getting `[ 'Jill', 'Alex', 'Dave' ]` 
 
-## Generator delegation
+So we add a `testingTeamIterator` similar to the`teamIterator and add a `testingTeamGenerator` and a `yield*` keyword so the middle of this script looks like:
+```javascript
+function* teamIterator(team) {
+    yield team.lead;
+    yield team.manager;
+    yield team.engineer;
+    const testingTeamGenerator = testingTeamIterator(team.testingTeam);
+    yield* testingTeamGenerator;
+}
 
-## Generators with Symbol.iterator
+function* testingTeamIterator(team) {
+    yield team.lead;
+    yield team.tester;
+}
+```
 
+Now we're outputting Amanda and Bill from the testing team.
+
+* `yield*` acts as a trapdoor(???) that the iterator falls through and stays in.
+  * If you just do `yield testingTeamGenerator` you'll receive `[ 'Jill', 'Alex', 'Dave', {} ]`
+
+## Symbol.iterator with Generators
+
+### Definition of Symbol.iterator
+* Stephen's Simple Definition
+  * A tool that teaches objects how to respond to the `for...of` loop
+* From MDN
+  * specifies the default iterator for an object. Used by `for...of`.
+* Symbol Interpolation
+  * **WHAT IS THAT?**
+
+### Example
+
+Symbol.iterator should allow us clean up our code. From the previous section, the full code example is 32 lines long:
+```javascript
+const testingTeam = {
+    lead: "Amanda",
+    tester: "Bill"
+};
+
+const engineeringTeam = {
+    testingTeam,
+    size: 3,
+    department: 'Engineering',
+    lead: 'Jill',
+    manager: 'Alex',
+    engineer: 'Dave'
+};
+
+function* teamIterator(team) {
+    yield team.lead;
+    yield team.manager;
+    yield team.engineer;
+    const testingTeamGenerator = testingTeamIterator(team.testingTeam);
+    yield testingTeamGenerator;
+}
+
+function* testingTeamIterator(team) {
+    yield team.lead;
+    yield team.tester;
+}
+
+const names = [];
+for (let name of teamIterator(engineeringTeam)) {
+    names.push(name);
+};
+console.log(names); //[ 'Jill', 'Alex', 'Dave', 'Amanda', 'Bill' ]
+```
+
+Now the same logic is only 29 lines long:
+```javascript
+const testingTeam = {
+    lead: "Amanda",
+    tester: "Bill",
+    [Symbol.iterator]: function* () {
+        yield this.lead;
+        yield this.tester;
+    }
+};
+
+const engineeringTeam = {
+    testingTeam,
+    size: 3,
+    department: 'Engineering',
+    lead: 'Jill',
+    manager: 'Alex',
+    engineer: 'Dave',
+    [Symbol.iterator]: function* () {
+        yield this.lead;
+        yield this.manager;
+        yield this.engineer;
+        yield* this.testingTeam;
+    }
+};
+
+const names = [];
+for (let name of engineeringTeam) {
+    names.push(name);
+};
+console.log(names); //[ 'Jill', 'Alex', 'Dave', 'Amanda', 'Bill' ]
+```
+
+### What's Going On?
+* `Symbol.iterator` is a special object included with ES6 that tells a `for...of` loop how to iterate over an object.
+* Arrays have a default `Symbol.iterator` so they can be used with a `for...of` loop without customization;
+* As the `for...of` loop goes through the generator, it will stop at every `yield` and returns the value to the right of the `yield` into the looper
+
+## Generators with Recursion
