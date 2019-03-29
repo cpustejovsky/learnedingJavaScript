@@ -127,6 +127,26 @@ console.log(cpustejovsky.__proto__); //Person {}
   * It is the origin of those objects prototype chain.
 * You can add methods to child objects after they've been made.
 * Generally, methods are added to the `.prototype` to save memory (they only need one) while having all the properties on the parent method.
+```javascript
+function Person(firstname = 'John', lastname = 'Doe') {
+    // console.log(this);
+    this.firstname = firstname;
+    this.lastname = lastname;
+    // console.log('This function is invoked.')
+}
+
+Person.prototype.getFullName = function() {
+    return `${this.firstname} ${this.lastname}`;
+}
+
+let johndoe = new Person();
+console.log(johndoe);
+console.log(johndoe.getFullName());
+
+let cpustejovsky = new Person('Charles', 'Pustejovsky');
+console.log(cpustejovsky); //Person { firstname: 'Charles', lastname: 'Pustejovsky' }
+console.log(cpustejovsky.getFullName()); // Charles Pustejovsky
+```
 
 ### Built-in Function Constructors
 
