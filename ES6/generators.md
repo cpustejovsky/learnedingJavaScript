@@ -254,4 +254,83 @@ console.log(names); //[ 'Jill', 'Alex', 'Dave', 'Amanda', 'Bill' ]
 * Arrays have a default `Symbol.iterator` so they can be used with a `for...of` loop without customization;
 * As the `for...of` loop goes through the generator, it will stop at every `yield` and returns the value to the right of the `yield` into the looper
 
-## Generators with Recursion
+## Practical Example with Generators
+### Generators with Recursion
+
+This is a tree, a common data structure
+![node-trees](images/tree-data-structure.png)
+* Where would find trees? Well, you silly billy, look up the frack-a-lacking DOM.
+* But also the comment section on Reddit.
+  * Probably any nested data? I need to confirm that
+
+```javascript
+class Comment {
+    constructor(content, children) {
+        this.content = content;
+        this.children = children;
+    }
+
+    *[Symbol.iterator]() {
+        
+    }
+}
+
+const children = [
+    new Comment('good comment', []),
+    new Comment('bad comment', []),
+    new Comment('meh', [])
+];
+const tree = new Comment('Great post!', children);
+console.log(tree);
+/*
+Comment {
+    content: 'Great post!',
+    children: [Comment {
+            content: 'good comment',
+            children: []
+        },
+        Comment {
+            content: 'bad comment',
+            children: []
+        },
+        Comment {
+            content: 'meh',
+            children: []
+        }
+    ]
+}
+*/
+```
+That's the top half of our node tree!
+
+**NOTE! ARRAY HELPERS DO NOT WORK IN GENERATORS**
+That's why you need to use the `for...of` loop
+
+```javascript
+class Comment {
+    constructor(content, children) {
+        this.content = content;
+        this.children = children;
+    }
+
+    *[Symbol.iterator]() {
+        yield this.content;
+        for (let child of this.children) {
+            yield* child;
+        }
+    }
+}
+
+const children = [
+    new Comment('good comment', []),
+    new Comment('bad comment', []),
+    new Comment('meh', [])
+];
+const tree = new Comment('Great post!', children);
+
+const values = [];
+for (let value of tree) {
+    values.push(value);
+};
+console.log(values);//['Great post!', 'good comment', 'bad comment', 'meh']
+```
