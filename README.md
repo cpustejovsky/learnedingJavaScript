@@ -5,6 +5,16 @@ The unified location of my notes on JavaScript and other things related to the w
 * [Notes on JavaScript](/JavaScript)
 * [Notes on ES6](/ES6)
 
+## Kyle Simpson's YDKJS Series
+1. ~~Up & Going~~ **Already read!**
+2. Scope & Closures **Read by April 6th, 2019**
+3. this & Object Prototypes **Read by April 26th, 2019**
+4. ES6 & Beyond **Read by May 29th, 2019**
+
+### Scope & Closures
+
+[Notes will Link Here](#)
+
 ## Credit Where Credit is Due
 
 As these notes mature and grow, I'll add my own thoughts and spin on them. But the amazing online teachers who have laid this foundation deserve all the credit I can give them.

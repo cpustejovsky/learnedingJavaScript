@@ -20,13 +20,3 @@ For upgrades, updates, and improvements to JavaScript
 ##IDKJS
 For deep dives into JavaScript
 
-### Kyle Simpson's YDKJS Series in Order I'll be Reading
-1. ~~Up & Going~~ **Already read!**
-2. Scope & Closures **Read by April 6th, 2019**
-3. this & Object Prototypes **Read by April 26th, 2019**
-4. ES6 & Beyond **Read by May 29th, 2019**
-5. Types & Grammar **I'll read it someday depending on if I get into TypeScript or not** ¯\_(ツ)_/¯
-
-#### Scope & Closures
-
-[Notes will Link Here](#)
