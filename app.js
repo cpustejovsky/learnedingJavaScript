@@ -1,22 +1,18 @@
-promise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        resolve();
-    }, 3000);
-});
+function Person(firstname = 'John', lastname = 'Doe') {
+    // console.log(this);
+    this.firstname = firstname;
+    this.lastname = lastname;
+    // console.log('This function is invoked.')
+}
 
-promise
-    .then(() => console.log('yay! it\'s finished!'))
-    .then(() => console.log('w00t! w00t! this also ran!'))
-    .catch(()=> console.log('oh noooooes!'))
+Person.prototype.getFullName = function() {
+    return `${this.firstname} ${this.lastname}`;
+}
 
-console.log(promise);
-console.log('JavaScript is synchronous: 1');
-console.log('JavaScript is synchronous: 2');
-console.log('JavaScript is synchronous: 3');
-console.log('JavaScript is synchronous: 4');
-console.log('JavaScript is synchronous: 5');
-console.log('JavaScript is synchronous: 6');
-console.log('JavaScript is synchronous: 7');
-console.log('JavaScript is synchronous: 8');
-console.log('JavaScript is synchronous: 9');
-console.log('JavaScript is synchronous: 10');
+let johndoe = new Person();
+console.log(johndoe);
+console.log(johndoe.getFullName());
+
+let cpustejovsky = new Person('Charles', 'Pustejovsky');
+console.log(cpustejovsky); //Person { firstname: 'Charles', lastname: 'Pustejovsky' }
+console.log(cpustejovsky.getFullName()); // Charles Pustejovsky
