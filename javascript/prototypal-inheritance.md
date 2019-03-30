@@ -129,12 +129,11 @@ console.log(cpustejovsky.__proto__); //Person {}
 * Generally, methods are added to the `.prototype` to save memory (they only need one) while having all the properties on the parent method.
 ```javascript
 function Person(firstname = 'John', lastname = 'Doe') {
-    // console.log(this);
+    // properties set up inside function constructor
     this.firstname = firstname;
     this.lastname = lastname;
-    // console.log('This function is invoked.')
 }
-
+// methods set up outside function constructor to save memory because pass by value
 Person.prototype.getFullName = function() {
     return `${this.firstname} ${this.lastname}`;
 }
