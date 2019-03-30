@@ -20,32 +20,7 @@ For upgrades, updates, and improvements to JavaScript
     * https://medium.com/dailyjs/a-simple-guide-to-understanding-javascript-es6-generators-d1c350551950
   * Work with them more in practice to get a better feel for them.
 * How does the `let` keyword provide the same solution that `var self = this` does for functions inside of methods
-* Why does `let` in the `for` loop lead to 0,1,2 instead of 3,3,3?
-```javascript
-function buildFunctions() {
 
-    var arr = [];
-
-    for (var i = 0; i < 3; i++) {
-        
-        arr.push(
-            function(){
-                console.log(i);
-            }
-        )
-        
-    }
-
-    return arr;
-};
-
-
-var fs = buildFunctions();
-
-fs[0]();//0
-fs[1]();//1
-fs[2]();//2
-```
 
 ##IDKJS
 For deep dives into JavaScript

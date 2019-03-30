@@ -134,9 +134,71 @@ anonymousGreet();
 
 ## By value vs. By reference
 * passing
-  * Either A=
+  * A=B
+    * the `=` operator sets up a new space in memory
+    * sets a variable to a value in memory
+  * passing as a paramter
 * primitives pass by value 
   * change A doesn't affect B
 * objects pass by reference and don't mutate
   * changing A changes B
 ![reference-vs-value](images/pass-by-reference-vs-pass-by-value-animation.gif)
+
+## Objects, Functions, and `this`
+
+* When a function is invoked, the execution context is created and put on the stack
+* `this` can change depending on how the function is invoked
+  * At the global object, `this` points to the global object
+    * to the Window in the case of the browser
+  * When you create a function and invoke it, same thing happens
+  * Also when ytou invoke a function expression
+* For object methods
+  * `this` points to the object that the method is sitting inside of
+  * **BUT!!!!**
+    * for functions inside a method, `this` points to the global object
+    * Fixes
+      * var self=this as top of the method and use self instead of this
+```javascript
+var c = {
+    name: "the c object",
+    log: function() {
+        var self = this;
+
+        console.log(self);
+        var setname = function(newname) {
+            self.name = newname;
+        }
+        setname('Updated c object'); //changes the global object, not the created object
+        console.log(self);
+    }
+};
+c.log();
+```
+## Arrays: Collections of Anything
+* dynamic typing means you can have an array with primitives, objects, and functions
+* arguments are the parameters you pass to a function
+  * parameters are hoisted and set to undefined
+  * parameters are processed left to right
+
+## Function Overloading
+
+* Since JavaScript doesn't have this feature (because it has 1st class functions), you need to create other functions that a call a function with preset parameters if you desire an overloaded function.
+
+## IIFEs
+* Immediately Ivoked Function Expresions
+```javascript
+let a = 2;
+let b = 3;
+
+(function IIFE() {
+    let a = 3;
+    let b = 4;
+    //also do important stuff
+}());
+
+console.log(a); //2
+console.log(b); //3
+```
+
+IIFEs allow functions to be run in the global namespace without that function's variables polluting said namespace. This makes it more usable. You can also pass in the global object into an IIFE.
+
