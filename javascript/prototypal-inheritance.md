@@ -74,7 +74,26 @@ console.log(c.__proto__); // []
 * JavaScript named thusly to attract Java developers.
 * Therefore you have code like:
 ```javascript
-let john = new Person();
+function Person(firstname = 'John', lastname = 'Doe') {
+    console.log(this);
+    this.firstname = firstname;
+    this.lastname = lastname;
+    console.log('This function is invoked.')
+}
+let johndoe = new Person();
+console.log(johndoe);
+
+let cpustejovsky = new Person('Charles', 'Pustejovsky');
+console.log(cpustejovsky);
+
+/*
+Person {}
+This function is invoked.
+Person { firstname: 'John', lastname: 'Doe' }
+Person {}
+This function is invoked.
+Person { firstname: 'Charles', lastname: 'Pustejovsky' }
+*/
 ```
 * This doesn't create a class since JavaScript doesn't really have classes
 * `new` is actually an operator of Left-to-Right precedence
@@ -92,15 +111,42 @@ let john = new Person();
 
 ### Function Constructors and `prototype`
 
+The prototype of these constructed objects
+```javascript
+console.log(cpustejovsky); //Person { firstname: 'Charles', lastname: 'Pustejovsky' }
+console.log(cpustejovsky.__proto__); //Person {}
+```
+
 * A function is a special type of object that in addition to the properties shared by all objects, has
   * a name property
   * a code property
+    * "Invocable" ()
 * And it also has a **prototype** property that starts out its life as an empty object but is only used by the `new` operator
 * This is confusing because a function's prototype property is not the prototype of the function.
   * Rather, it is the prototype of any objects created by `new` from the function.
   * It is the origin of those objects prototype chain.
 * You can add methods to child objects after they've been made.
 * Generally, methods are added to the `.prototype` to save memory (they only need one) while having all the properties on the parent method.
+```javascript
+function Person(firstname = 'John', lastname = 'Doe') {
+    // console.log(this);
+    this.firstname = firstname;
+    this.lastname = lastname;
+    // console.log('This function is invoked.')
+}
+
+Person.prototype.getFullName = function() {
+    return `${this.firstname} ${this.lastname}`;
+}
+
+let johndoe = new Person();
+console.log(johndoe);
+console.log(johndoe.getFullName());
+
+let cpustejovsky = new Person('Charles', 'Pustejovsky');
+console.log(cpustejovsky); //Person { firstname: 'Charles', lastname: 'Pustejovsky' }
+console.log(cpustejovsky.getFullName()); // Charles Pustejovsky
+```
 
 ### Built-in Function Constructors
 

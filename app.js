@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const testingTeam = {
     lead: 'Amanda',
     tester: 'Bill'
@@ -30,3 +31,5 @@ for (let name of teamIterator(engineeringTeam)) {
     names.push(name);
 };
 console.log(names); //[ 'Jill', 'Alex', 'Dave' ]
+=======
+>>>>>>> origin/master
