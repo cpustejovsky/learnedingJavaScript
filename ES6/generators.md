@@ -127,7 +127,7 @@ for (let name of teamIterator(engineeringTeam)) {
 };
 console.log(names); //[ 'Jill', 'Alex', 'Dave' ]
 ```
-<<<<<<< HEAD
+
 This is an example of delegating generators. Compare this code example to the one above:
 ```javascript
 const testingTeam = {
@@ -164,9 +164,7 @@ for (let name of teamIterator(engineeringTeam)) {
 console.log(names); //[ 'Jill', 'Alex', 'Dave', 'Amanda' , 'Bill' ]
 ```
 ### Practical Uses
-* 
-=======
->>>>>>> origin/master
+
 
 Now if we added an independent testing team as a apart of the engineering team...
 ```javascript

@@ -1,35 +1,18 @@
-<<<<<<< HEAD
-const testingTeam = {
-    lead: 'Amanda',
-    tester: 'Bill'
+function mapForEach(arr, fn){
+    let newArr = [];
+    for (let i = 0; i < arr.length; i++) {
+        newArr.push(
+            fn(arr[i])
+        )
+    };
+    return newArr;
 };
 
-const engineeringTeam = {
-    testingTeam,
-    size: 3,
-    department: 'Engineering',
-    lead: 'Jill',
-    manager: 'Alex',
-    engineer: 'Dave'
+function double(num){
+    return num * 2;
 };
 
-function* teamIterator(team) {
-    yield team.lead;
-    yield team.manager;
-    yield team.engineer;
-    const testingTeamGenerator = testingTeamIterator(team.testingTeam);
-    yield* testingTeamGenerator;
-}
+let numbers = [1,2,3,4,5,6,7,8,9,10];
 
-function* testingTeamIterator(team) {
-    yield team.lead;
-    yield team.tester;
-}
-
-const names = [];
-for (let name of teamIterator(engineeringTeam)) {
-    names.push(name);
-};
-console.log(names); //[ 'Jill', 'Alex', 'Dave' ]
-=======
->>>>>>> origin/master
+let doubledNumbers = mapForEach(numbers, double);
+console.log(doubledNumbers);
