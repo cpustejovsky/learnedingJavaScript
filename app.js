@@ -1,3 +1,8 @@
+const testingTeam = {
+    lead: 'Amanda',
+    tester: 'Bill'
+};
+
 const engineeringTeam = {
     testingTeam,
     size: 3,
@@ -7,15 +12,12 @@ const engineeringTeam = {
     engineer: 'Dave'
 };
 
-const testingTeam = {
-    lead: 'Amanda',
-    tester: 'Bill'
-}
-
 function* teamIterator(team) {
     yield team.lead;
     yield team.manager;
     yield team.engineer;
+    const testingTeamGenerator = testingTeamIterator(team.testingTeam);
+    yield* testingTeamGenerator;
 }
 
 function* testingTeamIterator(team) {

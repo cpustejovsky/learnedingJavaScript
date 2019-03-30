@@ -127,6 +127,41 @@ for (let name of teamIterator(engineeringTeam)) {
 };
 console.log(names); //[ 'Jill', 'Alex', 'Dave' ]
 ```
+This is an example of delegating generators. Compare this code example to the one above:
+```javascript
+const testingTeam = {
+    lead: 'Amanda',
+    tester: 'Bill'
+};
+
+const engineeringTeam = {
+    testingTeam,
+    size: 3,
+    department: 'Engineering',
+    lead: 'Jill',
+    manager: 'Alex',
+    engineer: 'Dave'
+};
+
+function* teamIterator(team) {
+    yield team.lead;
+    yield team.manager;
+    yield team.engineer;
+    const testingTeamGenerator = testingTeamIterator(team.testingTeam);
+    yield* testingTeamGenerator;
+}
+
+function* testingTeamIterator(team) {
+    yield team.lead;
+    yield team.tester;
+}
+
+const names = [];
+for (let name of teamIterator(engineeringTeam)) {
+    names.push(name);
+};
+console.log(names); //[ 'Jill', 'Alex', 'Dave', 'Amanda' , 'Bill' ]
+```
 ### Practical Uses
 * 
 
