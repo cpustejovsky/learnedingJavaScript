@@ -25,3 +25,7 @@ For upgrades, updates, and improvements to JavaScript
 ##IDKJS
 For deep dives into JavaScript
 
+##NodeJS
+* Read over and understand NodeJS Core Modules
+* Look deeper into Events and the Event Emitter
+* read up on this http://expressjs.com/en/guide/routing.html
