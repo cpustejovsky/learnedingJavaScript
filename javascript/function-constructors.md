@@ -153,6 +153,31 @@ console.log(cpustejovsky.getFullName()); // Charles Pustejovsky
   * Has methods like `.toFixed`, etc. 
 ```javascript
 "Charles".length //7
+//It boxes in that string into the String object to run the `.length` method
+
+//You can modify the String base object that will effect all strings
+String.prototype.isLengthGreaterThan = function(limit) {
+    return this.length > limit;
+};
+
+console.log("cpustejovsky".isLengthGreaterThan(3)); //true
+console.log("cpustejovsky".isLengthGreaterThan(30)); //false
+
+let a = new Number(3);
+
+console.log(a);
+console.log(a.toFixed(3));
+
+console.log(a == 3);
+console.log(a === 3);
+
+let b = new String('hello, world!');
+
+console.log(b);
+console.log(b.toUpperCase());
+
+console.log (b == 'hello, world!');
+console.log (b === 'hello, world!');
 ```
 * In the above example, the JavaScript engine boxes "Charles" into `String()`
 * `Date()` is another example.
@@ -165,17 +190,18 @@ console.log(cpustejovsky.getFullName()); // Charles Pustejovsky
 * Don't use `for...in` because arrays are actually a type of object
   * And if a Framework adds a feature to the prototype, it will mess up the `for...in` looping because it'll include the new feature.
 * So use standard iterators!
-
-### `Object.create` and PURE! PROTOTYPAL! INHERITANCE!
-* "Beee yourself!"
-* JavaScript shouldn't pretend to be Java when it isn't
-* So here we go!
 ```javascript
-let new_object = Object.create(parent_object);
+Array.prototype.myCustomFeature = 'cool beans, bro!'
+
+let arr = ['John', 'Jacob', 'Jingleheimer Schmidt'];
+
+for (var prop in arr) {
+    console.log(`${prop}: ${arr[prop]}`);
+}
+/* OUTPUT
+0: John
+1: Jacob
+2: Jingleheimer Schmidt
+myCustomFeature: cool beans, bro!
+*/
 ```
-Let's break that down:
-* `Object` is the base object
-* `parent_object` is the object you want to create from
-* This whole line creates an empty object with a prototype that is pointing to `parent_object`
-* Now you can override what you want by adding properties and methods to override the prototype
-* 
