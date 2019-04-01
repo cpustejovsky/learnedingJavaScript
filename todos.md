@@ -1,6 +1,6 @@
-#To Do List
+# To Do List
 
-##JavaScript
+## JavaScript
 For foundational and basic JavaScript. 
 
 * Does `for...of` have the same issues that Tony Alicea brings up about `for...in` as they relate to changes in the base Array object
@@ -22,10 +22,16 @@ For upgrades, updates, and improvements to JavaScript
 * How does the `let` keyword provide the same solution that `var self = this` does for functions inside of methods
 
 
-##IDKJS
+## IDKJS
 For deep dives into JavaScript
 
-##NodeJS
+## NodeJS
 * Read over and understand NodeJS Core Modules
 * Look deeper into Events and the Event Emitter
 * read up on this http://expressjs.com/en/guide/routing.html
+
+## MongoDB
+* How document-oriented databases work conceptually
+* Collections
+* Documents
+* 
