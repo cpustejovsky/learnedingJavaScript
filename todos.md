@@ -23,8 +23,10 @@ For upgrades, updates, and improvements to JavaScript
 
 
 ## IDKJS
-For deep dives into JavaScript
-
+### Scope & Closures
+* LHS vs RHS lookups?
+  * Reread chapter to one to get a better idea.
+  * Write out the rules and test yourself?
 ## NodeJS
 * Read over and understand NodeJS Core Modules
 * Look deeper into Events and the Event Emitter
@@ -34,4 +36,8 @@ For deep dives into JavaScript
 * How document-oriented databases work conceptually
 * Collections
 * Documents
-* 
+* Mongoose Models
+  * Do schemas work or take inspiration from function constructors?
+  * Is there a way to use prototypal inheritance with mongodb? with mongoose?
+* RoboMongo vs terminal/shell?
+  * pros and cons?
