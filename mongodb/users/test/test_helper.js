@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 //assignment operator for ES6 Promises
 mongoose.Promise = global.Promise;
 
-//the before function makes sure that mongodb is connected before the tests begin
 before((done) => {
     mongoose.connect('mongodb://localhost/users_test', {
         useNewUrlParser: true

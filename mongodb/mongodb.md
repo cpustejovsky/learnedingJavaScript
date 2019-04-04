@@ -100,4 +100,54 @@ const joe = new User({ name: 'Joe'});
 joe.save()
 ```
 * without `joe.save()`, the joe User instance is not persisted to the database
+
+## Finding Model Instances
+Example from `reading_test.js`
+```javascript
+return User.find({ name: 'Joe' })
+return User.findOne({
+        _id: joe._id
+    })
+```
+`joe._id` will look something like 5ca4a5d9e4a02d4f8b949c87 which is not s string but an object. 
+
+### `.find()`
+`.find(criteria)` Finds all the model instances that match the criteria provided in the form of an object and returns an array
+### `.findOne`
+`.findOne(criteria)` Finds the first model instance that matches the criteria provided in the form of an object and returns a single record.
+
+## Removing Model Instances
+With this line as context
+```javascript
+let joe;
+joe = new User({ name: 'Joe'});
+joe.save();
+```
+
+* model instance removal
+  * `joe.remove()`
+    * works well when you have a direct reference to a particular record
+* model class removal
+  * `User.deleteOne({ name: 'Joe' })`
+    * works well when wanting to delete based on generic criteria
+  * `User.findOneandDelete({ name: 'Joe' })`
+  * `User.findByIdandDelete({ _id_: joe._id })`
+
+## Updating Model Instances
+
+* model instance updates
+  * set and save!
+    * first `joe.set('prop', 'newValue')` then `joe.save()`
+    * does not reflect to the database
+    * good for incremental updating
+      * multiple `.set`s with one `.save` at the end
+  * `.updateOne`
+    * does reflect to the database
+    * good for updating a bunch of records at once and saving all at once
+* model class updates
+  * `.updateOne`
+  * `.findOneAndUpdate`
+  * `.findByIdAndUpdate`
+
+* The reason to use MongoDB update operators to update records instead of finding instances, iterating through them, and updating them is because it makes unecessary calls to the server and is inefficient as a result.
 * 

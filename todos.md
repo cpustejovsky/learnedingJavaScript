@@ -35,9 +35,23 @@ For upgrades, updates, and improvements to JavaScript
 ## MongoDB
 * How document-oriented databases work conceptually
 * Collections
+  * https://docs.mongodb.com/manual/core/databases-and-collections/
 * Documents
+  * https://docs.mongodb.com/manual/core/document/
 * Mongoose Models
   * Do schemas work or take inspiration from function constructors?
   * Is there a way to use prototypal inheritance with mongodb? with mongoose?
 * RoboMongo vs terminal/shell?
   * pros and cons?
+* Mongoose Queries
+  * look over these more
+    * https://mongoosejs.com/docs/queries.html
+      * what is the real difference between `findOneaAndUpdate` vs `findByIdAndUpdate`? What are the different use-cases?
+        * Per Stephen Grider, `findByIdAndUpdate` will be for when you have the id of a very specific user.
+* MongoDB Operators
+  * https://docs.mongodb.com/manual/reference/operator/
+  * 
+
+## Testing
+* Better understand [Mocha hooks](https://medium.com/@kanyang/hooks-in-mocha-87cb43baa91c)
+* 

@@ -21,12 +21,12 @@ describe('updating records', () => {
     });
 
     it('model instance update', (done) => {
-        joe.set('name', 'Alex'); //does not reflect to the database; good for incremental updating
-        assertName(joe.save(), done); // now it reflects to the database
+        joe.set('name', 'Alex');
+        assertName(joe.save(), done);
     })
 
     it('model instance update', (done) => {
-        assertName(joe.updateOne({ name: 'Alex' }), done); //DOES reflect to the database; good for updating a bunch of records at once or somesuch
+        assertName(joe.updateOne({ name: 'Alex' }), done); 
     });
 
     it('A model class can update', (done) => {
@@ -47,6 +47,7 @@ describe('updating records', () => {
         );
     });
 });
+
 describe('updating more complex records (2 things instead of 1)', () => {
     let joe;
 

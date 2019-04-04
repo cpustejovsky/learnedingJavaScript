@@ -10,11 +10,11 @@ describe('Deleting a user (but technically, Mongoose only removes something)', (
             .then(() => done());
     });
 
-    it('model instance remove', (done) => { //joe instance; use-case: we have already fetched the user
+    it('model instance remove', (done) => {
         joe.remove()
-            .then(() => User.findOne({ name: 'Joe' }))       //needs to look through the DB to make sure the remove worked
-            .then((user) => {                                //Promise #2 is chained onto Promise #1 one line above it   
-                assert(user === null); //TODO: Why null instead of undefined?
+            .then(() => User.findOne({ name: 'Joe' }))
+            .then((user) => {                                
+                assert(user === null);
                 done();
             });
     });

@@ -100,3 +100,82 @@ function multiply(a, b){return a*b;}
 let multiplyByTwo = multiply.bind(this, 2);
 console.log(multiplyByTwo(3));//6
 ```
+
+## YDKJS: Scope & Closures
+
+### Modules
+
+A function has to be invoked for there to be a module instance created. Without the execution of the outer function, the creation of the inner scope and the closures would not occur.
+
+
+To state it more simply, there are two "requirements" for the module pattern to be exercised:
+1. There must be an outer enclosing function, and it must be invoked at least once (each time creates a new module instance).
+2. The enclosing function must return back at least one inner function, so that this inner function has closure over the private scope, and can access and/or modify that private state.
+
+#### Modern Modules
+
+```javascript
+/*
+MyModules assigned it IIFE named Manager
+Declares empty object modules
+runs function define that takes three parameters
+    name
+    deps (dependencies as an array)
+    impl (implementation)
+define adds any dependencies to the module object using a for loop
+then it assigned to module[name] the function with an apply method that adds on any dependencies as parameters
+`modules[name] = impl.apply(impl, deps);` 
+    invokes the definition wrapper function for a module(passing in any dependencies), and storing the return value, the module 's API, into an internal list of modules tracked by name.
+get returns module[name] based on what name is passed in as an argument
+MyModules returns an object with define and get as methods
+*/
+
+var MyModules = (function Manager() {
+    var modules = {};
+
+    function define(name, deps, impl) {
+        for (var i = 0; i < deps.length; i++) {
+            deps[i] = modules[deps[i]];
+        }
+        modules[name] = impl.apply(impl, deps);
+    }
+
+    function get(name) {
+        return modules[name];
+    }
+
+    return {
+        define: define,
+        get: get
+    };
+})();
+
+MyModules.define("bar", [], function () {
+    function hello(who) {
+        return "Let me introduce: " + who;
+    }
+
+    return {
+        hello: hello
+    };
+});
+
+MyModules.define("foo", ["bar"], function (bar) {
+    var hungry = "hippo";
+
+    function awesome() {
+        console.log(bar.hello(hungry).toUpperCase());
+    }
+
+    return {
+        awesome: awesome
+    };
+});
+
+var bar = MyModules.get("bar");
+var foo = MyModules.get("foo");
+
+console.log(bar.hello("hippo")); // Let me introduce: hippo
+
+foo.awesome(); // LET ME INTRODUCE: HIPPO
+```
