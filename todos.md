@@ -1,5 +1,23 @@
 # To Do List
 
+## Projects
+
+### Automate the Boring Stuff with Node.JS
+
+* Reading and Writing Files
+* Organizing Files
+* Web Scraping
+* Working with:
+  * Excel
+  * PDF
+  * Word Docs
+  * CSV
+  * JSON data
+* Keeping time, scheduling tasks, launching programs
+* Sending emails and text messages
+* Manipulating images
+* 
+
 ## JavaScript
 For foundational and basic JavaScript. 
 

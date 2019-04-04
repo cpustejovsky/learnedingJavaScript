@@ -1,11 +1,4 @@
-let symbol = "#";
-
-for (let i = 0; i < 7; i++) {
-    console.log(symbol);
-    symbol += "#";
-}
-
-function triangleLooper (char, size) {
+function triangleLooper(char, size) {
     let character = char;
     for (let i = 0; i < size; i++) {
         console.log(character);
@@ -13,5 +6,6 @@ function triangleLooper (char, size) {
     }
 };
 
+triangleLooper('#', 7);
 triangleLooper("@", 8);
 triangleLooper("$", 9);
