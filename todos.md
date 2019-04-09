@@ -68,8 +68,12 @@ For upgrades, updates, and improvements to JavaScript
         * Per Stephen Grider, `findByIdAndUpdate` will be for when you have the id of a very specific user.
 * MongoDB Operators
   * https://docs.mongodb.com/manual/reference/operator/
-  * 
+* Validation
+  * look up `validate()` vs `validateSync()` with mongodb and nodejs
+    * https://medium.freecodecamp.org/avoiding-the-async-await-hell-c77a0fb71c4c
+    * [MongoDB Document Validation](https://www.mongodb.com/blog/post/document-validation-part-1-adding-just-the-right-amount-of-control-over-your-documents)
+    * [Mongoose Validation](https://mongoosejs.com/docs/validation.html)
+    * 
 
 ## Testing
 * Better understand [Mocha hooks](https://medium.com/@kanyang/hooks-in-mocha-87cb43baa91c)
-* 

@@ -4,13 +4,8 @@ const User = require('../src/user.js');
 describe('Validating records', () => {
     it('requires a user\'s name', () => {
         const user = new User ({ name: undefined });
-        /*
-        validateSync is a synchronous command; 
-        async validation would be used for... big stuff?
-        Honestly...
-        TODO: look up `async vs sync validation mongodb nodejs`
-        */
         const validationResult = user.validateSync();
+        console.log(validationResult);
         const { message } = validationResult.errors.name;
         assert(message === 'Name is required on a form');
     });
@@ -25,6 +20,7 @@ describe('Validating records', () => {
     it('disallowed invalid records from being saved', (done) => {
         const user = new User({ name: 'Al'});
         user.save()
+            /* Add in error catching logic when outside of a testing context*/
             .catch((validationResult) => {
                 const { message } = validationResult.errors.name;
                 assert(message === 'Name must be longer than 2 characters.');
@@ -32,11 +28,3 @@ describe('Validating records', () => {
             });
     });
 });
-
-    // let joe;
-
-    // beforeEach((done) => {
-    //     joe = new User({ name: 'Joe'});
-    //     joe.save()
-    //         .then(() => done());
-    // });

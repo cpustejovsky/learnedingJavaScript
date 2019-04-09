@@ -150,4 +150,23 @@ joe.save();
   * `.findByIdAndUpdate`
 
 * The reason to use MongoDB update operators to update records instead of finding instances, iterating through them, and updating them is because it makes unecessary calls to the server and is inefficient as a result.
-* 
+
+## Validating Records
+For our user model example, if we wanted to validate that record, we would change:
+```javascript
+const UserSchema = new Schema({
+    name: String
+});
+```
+to
+```javascript
+const UserSchema = new Schema({
+    name: {
+        type: String,
+        validate: {
+            validator: (name) => name.length > 2,
+            message: 'Name must be longer than 2 characters.'
+        },
+        required: [true, 'Name is required on a form']
+    }
+```
