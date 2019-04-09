@@ -170,3 +170,17 @@ const UserSchema = new Schema({
         required: [true, 'Name is required on a form']
     }
 ```
+
+## Handling Relational Data
+
+Following the examples and code inside of the `users` directory, you wouldn't want to add a posts collections in addition to the user collection which would be the best practice in a relational database. Aping that practice in MongoDB would be resource intensive and inefficient.
+
+So instead of having two collection side-by-side, the better practice would be for the posts to live inside the user collection. This is **nesting associations** which is key for MongoDB.
+
+So when nesting documents, you won't create a distinct Mongoose model, but a distinct schema. Mongoose models are only created to correspond to collections in the Mongo database.
+
+Like so
+![embedded-documents](../images/mongoose-embedded-documents.png)
+
+**NOTE:** the `/src/user.js` and `/src/post.js` is confusing since one is a model and one is just a schema. It would be better to split that logic up in the file structure to make it more clear to anyone reading the code.
+
