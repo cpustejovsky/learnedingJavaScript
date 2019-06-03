@@ -31,51 +31,51 @@
 // )()( === unbalanced
 // */
 
-// var balancedParens = (string) => {
-//     //split the string into an array of characters then reduce
-//     return !string.split("").reduce((previous, char) => {
-//     // have a counter of 0 and add 1 for "(" and subtract 1 ")" and make sure counter remains 0
-//     if (previous < 0) {
-//         return previous;
-//     }
-//     if (char === "(") {
-//         return ++previous;
-//     } if (char === ")") {
-//         return --previous;
-//     }
-//     return previous;
-//     }, 0);
-// }
-// console.log(balancedParens("(((("));
-// console.log(balancedParens("(())"));
-// console.log(balancedParens(")("));
+var balancedParens = (string) => {
+    //split the string into an array of characters then reduce
+    return !string.split("").reduce((previous, char) => {
+    // have a counter of 0 and add 1 for "(" and subtract 1 ")" and make sure counter remains 0
+    if (previous < 0) {
+        return previous;
+    }
+    if (char === "(") {
+        return ++previous;
+    } if (char === ")") {
+        return --previous;
+    }
+    return previous;
+    }, 0);
+}
+console.log(balancedParens("(((("));
+console.log(balancedParens("(())"));
+console.log(balancedParens(")("));
 
 // var trips = [{ distance: 34 }, { distance: 12 } , { distance: 1 }];
 // var totalDistance = trips.reduce(((accumulator, currentValue) => currentValue.distance + accumulator), 0);
 // console.log(totalDistance);
 
-// var desks = [
-//     { type: 'sitting' },
-//     { type: 'standing' },
-//     { type: 'sitting' },
-//     { type: 'sitting' },
-//     { type: 'standing' }
-//   ];
+var desks = [
+    { type: 'sitting' },
+    { type: 'standing' },
+    { type: 'sitting' },
+    { type: 'sitting' },
+    { type: 'standing' }
+];
 
-// var deskTypes = desks.reduce(
-//     (accumulator, desk) => {
-//         if (desk.type === "sitting") {
-//             ++accumulator.sitting;
-//         }
-//         if (desk.type === "standing") {
-//             ++accumulator.standing;
-//         }
-//         return accumulator;
-//     },
-//     { sitting: 0, standing: 0 }
-// );
+var deskTypes = desks.reduce(
+    (accumulator, desk) => {
+        if (desk.type === "sitting") {
+            ++accumulator.sitting;
+        }
+        if (desk.type === "standing") {
+            ++accumulator.standing;
+        }
+        return accumulator;
+    },
+    { sitting: 0, standing: 0 }
+);
 
-// console.log(deskTypes);
+console.log(deskTypes);
 
 /*
 Another really hard one!  Write a function called 'unique' that will remove all the duplicate values from an array.

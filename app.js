@@ -1,17 +1,22 @@
-let symbol = "#";
+// console.log("this is the playground script!");
 
-for (let i = 0; i < 7; i++) {
-    console.log(symbol);
-    symbol += "#";
-}
+var standard_input = process.stdin;
 
-function triangleLooper (char, size) {
-    let character = char;
-    for (let i = 0; i < size; i++) {
-        console.log(character);
-        character += char;
+// Set input character encoding.
+standard_input.setEncoding("utf-8");
+
+// Prompt user to input data in console.
+console.log("Please input text in command line.");
+
+// When user input data and click enter key.
+standard_input.on("data", function(data) {
+    // User input exit.
+    if (data === "exit\n") {
+        // Program exit.
+        console.log("User input complete, program exit.");
+        process.exit();
+    } else {
+        // Print user input in console.
+        console.log("User Input Data : " + data);
     }
-};
-
-triangleLooper("@", 8);
-triangleLooper("$", 9);
+});
