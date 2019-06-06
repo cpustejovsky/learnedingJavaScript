@@ -1,0 +1,97 @@
+<script>
+    /*
+    The purpose of this script is to make sure countries that have certain compliance restrictions like the EU (GDPR) are presented with an opt-in form while countries without these restrictions are automatically opted in.
+    */
+    let gpdrCountries = [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Czechia",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "United Kingdom",
+        "Jersey",
+        "Isle of Man",
+        "Guernsey",
+        "Iceland",
+        "Lichtenstein",
+        "Norway",
+        "Canada",
+        "Turkey"
+    ];
+
+    var submitBtn = $("#lp-pom-button-27"); // Add ID of Submit Button
+    var field = $("#country"); // Add ID of Dropdown field
+
+    var conField1 = field.parent().next();
+    var conField2 = conField1.next();
+
+    var topPos = conField1.position().top;
+    //conField2.css({ top: topPos });
+
+    conField1.css("display", "none");
+
+    var fieldHeight = conField1.height();
+    var space = fieldHeight * 2 + 37;
+    var halfSpace = space / 2;
+
+    var moreFields = $(conField2).nextAll();
+    moreFields.animate({ top: "-=" + space }, 0);
+    var upBuffer = true;
+    var downBuffer = true;
+
+    const fieldHider = function() {
+        console.log($(field).val());
+        for (let i = 0; i < gpdrCountries.length; i++) {
+            const element = gpdrCountries[i];
+            if ($(field).val() === gpdrCountries[i]) {
+                conField1.fadeIn();
+                $(conField2).val("False");
+                if (downBuffer) {
+                    submitBtn.animate({ top: "+=" + halfSpace }, 600);
+                    downBuffer = false;
+                    upBuffer = true;
+                }
+                return true;
+            }
+        }
+        for (let i = 0; i < gpdrCountries.length; i++) {
+            const element = gpdrCountries[i];
+            if ($(field).val() !== gpdrCountries[i]) {
+                conField1.fadeOut();
+                $(conField2).val("True");
+                if (upBuffer) {
+                    submitBtn.animate({ top: "-=" + halfSpace }, 600);
+                    upBuffer = false;
+                    downBuffer = true;
+                }
+                return true;
+            }
+        }
+    };
+    fieldHider();
+
+    $(field).change(fieldHider);
+</script>

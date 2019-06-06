@@ -1,0 +1,68 @@
+<script>
+    let complianceCountries = [
+        "Austria",
+        "Belgium",
+        "Bulgaria",
+        "Croatia",
+        "Cyprus",
+        "Czech Republic",
+        "Czechia",
+        "Denmark",
+        "Estonia",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Latvia",
+        "Lithuania",
+        "Luxembourg",
+        "Malta",
+        "Netherlands",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Slovakia",
+        "Slovenia",
+        "Spain",
+        "Sweden",
+        "United Kingdom",
+        "Jersey",
+        "Isle of Man",
+        "Guernsey",
+        "Iceland",
+        "Lichtenstein",
+        "Norway",
+        "Canada",
+        "Turkey"
+    ];
+
+    var field = $("#country"); // Add ID of Dropdown field
+
+    const fieldChecker = function() {
+        console.log($(field).val());
+        for (let i = 0; i < complianceCountries.length; i++) {
+            const element = complianceCountries[i];
+            if ($(field).val() === complianceCountries[i]) {
+                document.getElementById(
+                    "tell_us_how_you_want_to_hear_from_bitpay_view_our_privacy_policy_to_see_how_we_use_your_data_strong_yes_strong_bit_pay_can_email_me_about_news_promotions_and_offers_events_and_account_and_product_announcements"
+                ).checked = false;
+                return true;
+            }
+        }
+        for (let i = 0; i < complianceCountries.length; i++) {
+            const element = complianceCountries[i];
+            if ($(field).val() !== complianceCountries[i]) {
+                document.getElementById(
+                    "tell_us_how_you_want_to_hear_from_bitpay_view_our_privacy_policy_to_see_how_we_use_your_data_strong_yes_strong_bit_pay_can_email_me_about_news_promotions_and_offers_events_and_account_and_product_announcements"
+                ).checked = true;
+                return true;
+            }
+        }
+    };
+    fieldChecker();
+
+    $(field).change(fieldChecker);
+</script>
