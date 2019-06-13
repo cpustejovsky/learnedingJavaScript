@@ -1,4 +1,5 @@
-// console.log("this is the playground script!");
+//TODO: Make this work with JSON
+
 const clog = val => console.log(val);
 
 const removeDups = arr => {
