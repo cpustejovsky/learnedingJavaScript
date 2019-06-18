@@ -1,22 +1,19 @@
-// console.log("this is the playground script!");
-const clog = val => console.log(val);
+//working on leetcode example
 
-const removeDups = arr => {
-    let uniqueValues = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (uniqueValues.includes(arr[i])) {
-            continue;
-        } else {
-            uniqueValues.push(arr[i]);
+const isValid = string => {
+    let stack = [];
+    let mapping = {
+        ")": "(",
+        "]": "[",
+        "}": "{"
+    };
+    for (const char in string) {
+        if (mapping.hasOwnProperty(char)) {
+            if (stack.length) {
+                topElement = stack.pop();
+            } else {
+                topElement = "#";
+            }
         }
     }
-    return uniqueValues;
 };
-
-let test1 = removeDups(["John", "Taylor", "John"]); // ["John", "Taylor"]
-let test2 = removeDups([1, 0, 1, 0]); // [1, 0]
-let test3 = removeDups(["The", "big", "cat"]); // ["The", "big", "cat"]
-
-clog(test1);
-clog(test2);
-clog(test3);
