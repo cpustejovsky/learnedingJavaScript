@@ -50,7 +50,7 @@ console.log(Mar2019list);
 
 const Libary = {
     legacyMultiply(...rest) {
-        console.log('Please use the updated method isntead');
+        console.log('Please use the updated method instead');
         return this.updatedMultiply(...rest);
     },
     updatedMultiply(a, b) {

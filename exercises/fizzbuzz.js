@@ -1,20 +1,11 @@
-let count = 1;
-for (let index = 0; index < 100; index++){
-    if (count % 3 === 0 && count % 5 === 0) 
-        {
-            console.log(`(${count})FizzBuzz!`);
-        } else
-    if (count % 3 === 0) 
-        {
-            console.log(`(${count})Fizz!`);
-        } else
-    if (count % 5 === 0)
-        {
-            console.log(`(${count})Buzz!`);
-        } 
-    else
-        {
-            console.log(count);
-        }
-    count ++;
-}  
+for (let index = 1; index <= 100; index++) {
+    if (index % 3 === 0 && index % 5 === 0) {
+        console.log(`${index}=>FizzBuzz!`);
+    } else if (index % 3 === 0) {
+        console.log(`${index}=>Fizz!`);
+    } else if (index % 5 === 0) {
+        console.log(`${index}=>Buzz!`);
+    } else {
+        console.log(`${index}`);
+    }
+}
