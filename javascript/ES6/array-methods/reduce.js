@@ -1,9 +1,12 @@
 // //condensing an array of values into a single value
 
-// var numbers = [ 10, 20, 30];
-// var sum = 0;
-// var sumOfNumbers = numbers.reduce(((accumulator, currentValue) => accumulator + currentValue), 0);
-// console.log(sumOfNumbers);
+var numbers = [10, 20, 30];
+var sum = 0;
+var sumOfNumbers = numbers.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+);
+console.log(sumOfNumbers);
 
 // var primaryColors = [
 //     { color: 'red'},
@@ -21,31 +24,32 @@
 // togetherPrimaryColors = primaryColors.reduce(colorReducer, []);
 // console.log(togetherPrimaryColors);
 
-// //Balanced Parentheses Problem
-// /*
-// ()()()()() === balanced
-// ((((())))) === balanced
-// ))))) === unbalanced
-// ((((( === unbalanced
-// )( === unbalanced
-// )()( === unbalanced
-// */
+//Balanced Parentheses Problem
+/*
+()()()()() === balanced
+((((())))) === balanced
+))))) === unbalanced
+((((( === unbalanced
+)( === unbalanced
+)()( === unbalanced
+*/
 
-var balancedParens = (string) => {
+var balancedParens = string => {
     //split the string into an array of characters then reduce
     return !string.split("").reduce((previous, char) => {
-    // have a counter of 0 and add 1 for "(" and subtract 1 ")" and make sure counter remains 0
-    if (previous < 0) {
+        // have a counter of 0 and add 1 for "(" and subtract 1 ")" and make sure counter remains 0
+        if (previous < 0) {
+            return previous;
+        }
+        if (char === "(") {
+            return ++previous;
+        }
+        if (char === ")") {
+            return --previous;
+        }
         return previous;
-    }
-    if (char === "(") {
-        return ++previous;
-    } if (char === ")") {
-        return --previous;
-    }
-    return previous;
     }, 0);
-}
+};
 console.log(balancedParens("(((("));
 console.log(balancedParens("(())"));
 console.log(balancedParens(")("));
@@ -55,11 +59,11 @@ console.log(balancedParens(")("));
 // console.log(totalDistance);
 
 var desks = [
-    { type: 'sitting' },
-    { type: 'standing' },
-    { type: 'sitting' },
-    { type: 'sitting' },
-    { type: 'standing' }
+    { type: "sitting" },
+    { type: "standing" },
+    { type: "sitting" },
+    { type: "sitting" },
+    { type: "standing" }
 ];
 
 var deskTypes = desks.reduce(
@@ -85,8 +89,31 @@ Your function should return
 `[1,2,3,4]`
 Hint: Use the 'reduce' and 'find' helpers.
 */
-var testObject = {test: 123};
-var numbers = [8, ,'theotokos', true, 0, 1, 1, testObject.test, 2, 3, 4, 4, 1, 5, 2, 3, 6, 0, 1, 'theotokos', true, testObject.test];
+var testObject = { test: 123 };
+var numbers = [
+    8,
+    ,
+    "theotokos",
+    true,
+    0,
+    1,
+    1,
+    testObject.test,
+    2,
+    3,
+    4,
+    4,
+    1,
+    5,
+    2,
+    3,
+    6,
+    0,
+    1,
+    "theotokos",
+    true,
+    testObject.test
+];
 
 function unique(array) {
     /* First, make sure the function returns a reduced array*/
@@ -119,4 +146,4 @@ function unique(array) {
 }
 console.log(unique(numbers));
 
-console.log({"a": "b"} === {"a": "b"});
+console.log({ a: "b" } === { a: "b" });
