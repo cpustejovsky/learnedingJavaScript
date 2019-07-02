@@ -19,7 +19,7 @@ Second! We have **collections!**
 * No mixing and matching!
 
 ## Core Mongoose/Mongo Operators
-* Cread
+* Create
 * Read
 * Update
 * Destroy
@@ -42,6 +42,8 @@ Creating a collection of users, interacting with them with Mongoose, and testing
 ## Test Helper File
 Found inside `/test/` and is called, well, `test_helper.js`
 
+!
+
 Looks like
 ```javascript
 //bring in the Mongoose module
@@ -51,14 +53,16 @@ mongoose.Promise = global.Promise;
 
 //the before function makes sure that mongodb is connected before the tests begin
 before((done) => {
-    mongoose.connect('mongodb://localhost/users_test', {
-        useNewUrlParser: true
+  mongoose.connect('mongodb://localhost/users_test', {
+    useNewUrlParser: true
+  });
+  mongoose.connection/*No semicolons because these are chained methods*/
+    /* .once and .on are NodeJS event handlers*/
+    /* "open" and "error" are specific events that NodeJS is listening for*/
+    .once('open', () => { done(); })
+    .on('error', (error) => {
+      console.warn('Warning', error);
     });
-    mongoose.connection/*No semicolons because these are chained methods*/
-        .once('open', () => { done(); })
-        .on('error', (error) => {
-            console.warn('Warning', error);
-        });
 })
 
 // done does a bit of mocha magic to add asynchronisity
@@ -88,10 +92,10 @@ beforeEach((done) => {
 * Models have a **schema** which describes the properties each record should have along with the data those properties should be.
 * You can check out the user model in `/src/user.js`
   * At its most basic you:
-    * require in mongoose and mongoose's Schema method
-    * use mongoose's Schema to define your model's schema
-    * use `mongoose.model('model', modelSchema);` to create your model
-    * export your model
+    1. require in mongoose and mongoose's Schema method
+    1. use mongoose's Schema to define your model's schema
+    1. use `mongoose.model('model', modelSchema);` to create your model
+    1. export your model
 
 ## Creating Model Instance
 Example from `create_test.js`
