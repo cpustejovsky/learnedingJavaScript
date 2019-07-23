@@ -1,4 +1,6 @@
+//
 var Student = /** @class */ (function () {
+    //the use of public on constructor arguments is a shorthand to automatically create properties with that name.
     function Student(firstName, middleInitial, lastName) {
         this.firstName = firstName;
         this.middleInitial = middleInitial;
