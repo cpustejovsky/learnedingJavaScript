@@ -1,19 +1,5 @@
-//working on leetcode example
-
-const isValid = string => {
-   let stack = [];
-   let mapping = {
-      ")": "(",
-      "]": "[",
-      "}": "{"
-   };
-   for (const char in string) {
-      if (mapping.hasOwnProperty(char)) {
-         if (stack.length) {
-            topElement = stack.pop();
-         } else {
-            topElement = "#";
-         }
-      }
-   }
-};
+let counter = 0;
+while (1 === 1) {
+  counter++;
+  console.log(`this script has looped ${counter} times`);
+}
