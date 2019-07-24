@@ -1,0 +1,7 @@
+What hath God wrought?
+Does it count words
+That end with newline?
+#n This is a note
+Can Node see notes?
+Let me try again
+#n This is another note
