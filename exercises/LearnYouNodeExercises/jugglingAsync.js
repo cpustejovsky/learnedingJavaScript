@@ -13,36 +13,36 @@ http
           console.error(err);
         } else {
           console.log(data.toString());
-        }
-      })
-    );
-    res.on("error", console.error);
-  })
-  .on("error", console.error);
-http
-  .get(url2, res => {
-    res.setEncoding("utf8");
-    res.pipe(
-      bl((err, data) => {
-        if (err) {
-          console.error(err);
-        } else {
-          console.log(data.toString());
-        }
-      })
-    );
-    res.on("error", console.error);
-  })
-  .on("error", console.error);
-http
-  .get(url3, res => {
-    res.setEncoding("utf8");
-    res.pipe(
-      bl((err, data) => {
-        if (err) {
-          console.error(err);
-        } else {
-          console.log(data.toString());
+          http
+            .get(url2, res => {
+              res.setEncoding("utf8");
+              res.pipe(
+                bl((err, data) => {
+                  if (err) {
+                    console.error(err);
+                  } else {
+                    console.log(data.toString());
+                    http
+                      .get(url3, res => {
+                        res.setEncoding("utf8");
+                        res.pipe(
+                          bl((err, data) => {
+                            if (err) {
+                              console.error(err);
+                            } else {
+                              console.log(data.toString());
+                            }
+                          })
+                        );
+                        res.on("error", console.error);
+                      })
+                      .on("error", console.error);
+                  }
+                })
+              );
+              res.on("error", console.error);
+            })
+            .on("error", console.error);
         }
       })
     );
