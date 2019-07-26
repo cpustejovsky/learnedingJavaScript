@@ -1,5 +1,3 @@
-//TODO:
-
 const http = require("http");
 const bl = require("bl");
 
