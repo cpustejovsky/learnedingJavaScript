@@ -1,6 +1,5 @@
-//TODO: replace prompt with prompts in order to better accomplish todo below
 //TODO: Use promises and await/async to deal with callback hell
-
+//TODO: Read prompts docs https://www.npmjs.com/package/prompts
 const prompts = require("prompts");
 
 (async () => {

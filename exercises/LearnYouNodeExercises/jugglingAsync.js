@@ -1,10 +1,13 @@
-//TODO:
-
 const http = require("http");
 const bl = require("bl");
+
 const url1 = process.argv[2];
 const url2 = process.argv[3];
 const url3 = process.argv[4];
+
+// const url1 = "http://www.cpustejovsky.com/test-route1";
+// const url2 = "http://www.cpustejovsky.com/test-route2";
+// const url3 = "http://www.cpustejovsky.com/test-route3";
 
 const httpRequest = url => {
   return new Promise((resolve, reject) => {
@@ -16,7 +19,7 @@ const httpRequest = url => {
             if (err) {
               reject(err);
             } else {
-              resolve(data.toString("ascii"));
+              resolve(data.toString("utf8"));
             }
           })
         );
@@ -26,16 +29,6 @@ const httpRequest = url => {
   });
 };
 
-// httpRequest(url1)
-//   .then(results => console.log(results))
-//   .catch(error => console.error(`Error: ${error}`));
-// httpRequest(url2)
-//   .then(results => console.log(results))
-//   .catch(error => console.error(`Error: ${error}`));
-// httpRequest(url3)
-//   .then(results => console.log(results))
-//   .catch(error => console.error(`Error: ${error}`));
-
 const promise = Promise.all([
   httpRequest(url1),
   httpRequest(url2),
@@ -43,5 +36,7 @@ const promise = Promise.all([
 ]);
 
 promise
-  .then(results => console.log(results))
+  .then(results => {
+    results.forEach(element => console.log(element));
+  })
   .catch(error => console.error(`Error: ${error}`));
