@@ -1,65 +1,42 @@
-//https://edabit.com/challenge/MDixWSYxH5JZX3xo3
+// const isValidIP = ipAddress => {
+//   let ipAddyArr = ipAddress.split(".");
+//   for (let i = 0; i < ipAddyArr.length; i++) {
+//     let elem = ipAddyArr[i];
+//     if (elem[0] === "0") return false;
+//   }
+//   let qualification = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+//   if (
+//     qualification.exec(ipAddress) === null ||
+//     qualification.exec(ipAddress) === false
+//   ) {
+//     return false;
+//   } else {
+//     return true;
+//   }
+// };
 
-const deepFlatten = arr =>
-    [].concat(...arr.map(v => (Array.isArray(v) ? deepFlatten(v) : v)));
-
-const birdCode = arr => {
-    let acronymArray = [];
-    for (let i = 0; i < arr.length; i++) {
-        let tempArray = arr[i].split(" ");
-        for (let j = 0; j < tempArray.length; j++) {
-            if (tempArray[j].includes("-")) {
-                tempArray[j] = tempArray[j].replace("-", " ");
-                console.log(tempArray);
-            }
-        }
-        if (tempArray.length === 1) {
-            resultString = tempArray[0].slice(0, 4).toUpperCase();
-            acronymArray.push(resultString);
-        }
-        if (tempArray.length === 2) {
-            resultString =
-                tempArray[0].slice(0, 2).toUpperCase() +
-                tempArray[1].slice(0, 2).toUpperCase();
-            acronymArray.push(resultString);
-        }
-        if (tempArray.length === 3) {
-            resultString =
-                tempArray[0].slice(0, 1).toUpperCase() +
-                tempArray[1].slice(0, 1).toUpperCase() +
-                tempArray[2].slice(0, 2).toUpperCase();
-            acronymArray.push(resultString);
-        }
-        if (tempArray.length === 4) {
-            resultString =
-                tempArray[0].slice(0, 1).toUpperCase() +
-                tempArray[1].slice(0, 1).toUpperCase() +
-                tempArray[2].slice(0, 1).toUpperCase() +
-                tempArray[3].slice(0, 1).toUpperCase();
-            acronymArray.push(resultString);
-        }
+function isValidIP(str) {
+  if (/^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$/.test(str)) {
+    str = str.split(".");
+    for (var i in str) {
+      if (parseInt(str[i]).toString().length !== str[i].length || str[i] > 255)
+        return false;
     }
-    console.log(acronymArray);
-};
+    return true;
+  }
 
-birdCode(["American Redstart", "Northern Cardinal"]); // ["AMRE","NOCA"]
-birdCode(["Bobolink", "American White Pelican"]); // ["BOBO","AWPE"]
-birdCode(["Great American White Pelican"]); // ["GAWP"]
-birdCode(["Black-Capped Chickadee", "Common Tern"]); // ["BCCH", "COTE"]
+  return false;
+}
 
-//needs to split along "-" also
-// let resultString;
-// stringArray.forEach(element => {
-//     if (element.split("-").length === 2) {
-//         element = element.split("-");
-//         resultString =
-//             element[0].slice(0, 1).toUpperCase() +
-//             element[1].slice(0, 1).toUpperCase();
-//         console.log(resultString);
-//     } else {
-//         resultString =
-//             stringArray[0].slice(0, 2).toUpperCase() +
-//             stringArray[1].slice(0, 2).toUpperCase();
-//         console.log(resultString);
-//     }
-// });
+console.log(isValidIP("1.2.3.4"));
+// true
+console.log(isValidIP("1.2.3"));
+// false
+console.log(isValidIP("1.2.3.4.5"));
+// false
+console.log(isValidIP("123.45.67.89"));
+// true
+console.log(isValidIP("123.456.78.90"));
+// false
+console.log(isValidIP("123.045.067.089"));
+// false

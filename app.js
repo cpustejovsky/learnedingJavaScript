@@ -1,3 +1,13 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+let counter = 0;
+while (1 === 1) {
+  counter++;
+  console.log(`this script has looped ${counter} times`);
+}
+>>>>>>> origin/master
+=======
 function a() {
   console.log("a=1 invoked");
   return 1;
@@ -19,3 +29,4 @@ function a() {
 // };
 
 console.log(a());
+>>>>>>> origin/master
