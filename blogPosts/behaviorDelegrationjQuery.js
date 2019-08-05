@@ -1,6 +1,6 @@
 var Widget = {
   init: function(width, height) {
-    this.width = width || 50;
+    this.width = width || 100;
     this.height = height || 50;
     this.$elem = null;
   },
@@ -15,9 +15,8 @@ var Widget = {
     }
   }
 };
-
+console.log(Widget);
 var Button = Object.create(Widget);
-
 Button.setup = function(width, height, label) {
   // delegated call
   this.init(width, height);
@@ -33,15 +32,16 @@ Button.build = function($where) {
 Button.onClick = function(evt) {
   console.log("Button '" + this.label + "' clicked!");
 };
-
+console.log("==============BUTTON===================");
+console.log(Button);
 $(document).ready(function() {
   var $body = $(document.body);
 
   var btn1 = Object.create(Button);
-  btn1.setup(200, 200, "What hath");
+  btn1.setup("", "", "What hath");
 
   var btn2 = Object.create(Button);
-  btn2.setup(200, 200, "God wrought?");
+  btn2.setup("", "", "God wrought?");
 
   btn1.build($body);
   btn2.build($body);
