@@ -4,7 +4,7 @@ So a bit about me. I wear New Balance and unironically listen to Pop Punk and al
 
 All those things make me feel a close kinship with JavaScript. Why?
 
-We can pretend (badly) that we have it, but neither of us have class!
+**We can pretend (badly) that we have it, but neither of us have class!**
 
 Get it....?
 

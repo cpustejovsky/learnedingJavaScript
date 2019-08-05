@@ -43,6 +43,6 @@ $(document).ready(function() {
   var btn2 = Object.create(Button);
   btn2.setup("", "", "God wrought?");
 
-  btn1.build($body);
-  btn2.build($body);
+  btn1.build($("#jQueryTesting"));
+  btn2.build($("#jQueryTesting"));
 });

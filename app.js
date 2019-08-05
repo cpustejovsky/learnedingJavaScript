@@ -1,32 +1,14 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-let counter = 0;
-while (1 === 1) {
-  counter++;
-  console.log(`this script has looped ${counter} times`);
-}
->>>>>>> origin/master
-=======
-function a() {
-  console.log("a=1 invoked");
-  return 1;
+function foo() {
+  console.log(this.a);
 }
 
-var a = () => {
-  console.log("a=2 invoked");
-  return 2;
+var obj = {
+  a: 2,
+  foo: foo
 };
 
-function a() {
-  console.log("a=3 invoked");
-  return 3;
-}
+var bar = obj.foo.bind(obj); // function reference/alias!
 
-// var a = () => {
-//   console.log("a=4 invoked");
-//   return 4;
-// };
+var a = "oops, global"; // `a` also property on global object
 
-console.log(a());
->>>>>>> origin/master
+bar();
