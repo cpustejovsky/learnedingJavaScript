@@ -1,6 +1,6 @@
 const prompts = require("prompts");
 
-async function characterCreation() {
+module.exports = async function characterCreation() {
   let Character = {
     name: "Farkyl",
     age: 20,
@@ -68,6 +68,4 @@ async function characterCreation() {
   newCharacter.age = response.age;
   newCharacter.class = response.charClass;
   return newCharacter;
-}
-
-characterCreation().then(val => console.log(val));
+};
