@@ -1,6 +1,6 @@
 const prompts = require("prompts");
 
-module.exports = async function characterCreation() {
+module.exports = async function characterCreation(yourCharacter) {
   let Character = {
     name: "Farkyl",
     age: 20,
@@ -67,5 +67,11 @@ module.exports = async function characterCreation() {
   newCharacter.name = response.charName;
   newCharacter.age = response.age;
   newCharacter.class = response.charClass;
-  return newCharacter;
+  console.log(
+    `Well met, ${newCharacter.name} You will need all your skills as a ${
+      newCharacter.class
+    } to live past age ${newCharacter.age}`
+  );
+  yourCharacter = newCharacter;
+  return yourCharacter;
 };
