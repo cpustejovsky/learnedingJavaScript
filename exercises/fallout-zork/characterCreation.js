@@ -1,13 +1,13 @@
 const prompts = require("prompts");
 
-module.exports = function createYourCharacter(yourCharacter) {
-  const Character = {
+async function characterCreation() {
+  let Character = {
     name: "Farkyl",
     age: 20,
     class: "Cleric"
   };
 
-  const newCharacter = Object.create(Character);
+  let newCharacter = Object.create(Character);
 
   const questions = [
     {
@@ -63,13 +63,11 @@ module.exports = function createYourCharacter(yourCharacter) {
     }
   ];
 
-  (async () => {
-    const response = await prompts(questions);
-    newCharacter.name = response.charName;
-    newCharacter.age = response.age;
-    newCharacter.class = response.charClass;
-    yourCharacter = newCharacter;
-    return yourCharacter;
-    // => response => { username, age, about }
-  })();
-};
+  const response = await prompts(questions);
+  newCharacter.name = response.charName;
+  newCharacter.age = response.age;
+  newCharacter.class = response.charClass;
+  return newCharacter;
+}
+
+characterCreation().then(val => console.log(val));

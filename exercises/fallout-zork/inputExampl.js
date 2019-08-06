@@ -1,4 +1,5 @@
-const { prompt } = require("prompts");
+//from https://github.com/terkelg/prompts/blob/master/example.js
+const { prompt } = require("prompt");
 
 let interval;
 
