@@ -68,7 +68,7 @@ module.exports = async function characterCreation(yourCharacter) {
   newCharacter.age = response.age;
   newCharacter.class = response.charClass;
   console.log(
-    `Well met, ${newCharacter.name} You will need all your skills as a ${
+    `Well met, ${newCharacter.name}! You will need all your skills as a ${
       newCharacter.class
     } to live past age ${newCharacter.age}`
   );

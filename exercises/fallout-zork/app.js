@@ -6,6 +6,5 @@ let yourChar = {};
 (async () => {
   let test = await characterCreation(yourChar);
   yourChar = test;
-  console.log(yourChar);
   return yourChar;
-})();
+})().then(val => console.log());
