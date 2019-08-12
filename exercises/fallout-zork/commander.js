@@ -1,13 +1,12 @@
-const commander = require("commander");
-const program = new commander.Command();
-program.version("0.0.1");
-
-program.option("-c, --cheese [type]", "Add cheese with optional type");
+const program = require("commander");
 
 program.parse(process.argv);
-
-if (program.cheese === undefined) {
-  console.log("no cheese");
-} else if (program.cheese === true) {
-  console.log("add cheese");
-} else console.log(`add cheese type ${program.cheese}`);
+if (!process.argv[2]) {
+  console.log("Hello, there! Left or Right?");
+} else if (process.argv[2].toUpperCase() === "LEFT") {
+  console.log("You went left!");
+} else if (process.argv[2].toUpperCase() === "RIGHT") {
+  console.log("You went right!");
+} else {
+  console.log("I don't know where you went");
+}
