@@ -1,10 +1,21 @@
 const characterCreation = require("./characterCreation.js");
 
 console.log("Welcome adventurer! Time to create your character");
-let yourChar = {};
 
-(async () => {
-  let test = await characterCreation(yourChar);
-  yourChar = test;
+async function createYourCharacter() {
+  let yourChar = await characterCreation();
   return yourChar;
-})().then(val => console.log());
+}
+let yourChar;
+createYourCharacter()
+  .then(val => {
+    yourChar = val;
+    return yourChar;
+  })
+  .then(() => {
+    console.log(
+      `You find yourself in a dungeon. ${
+        yourChar.name
+      }, which direction do you want to go?`
+    );
+  });
