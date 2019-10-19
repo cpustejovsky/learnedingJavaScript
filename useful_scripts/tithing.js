@@ -1,8 +1,7 @@
-let catherineBiWeekly = 1150;
-let catherineWeekly = (catherineBiWeekly * 26) / 52;
-let charlesWeekly = 670;
+let catherineWeekly = 575;
+let charlesWeekly = 717.21;
 
-let annualRevenue = charlesWeekly * 52 + catherineBiWeekly * 26;
+let annualRevenue = (charlesWeekly + catherineWeekly) * 52;
 
 let tithe = (annualRevenue / 52) * 0.1;
 console.log(`
